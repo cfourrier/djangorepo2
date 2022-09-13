@@ -7,27 +7,30 @@ from listings.models import Ad
 
 def hello(request):
     bands = Band.objects.all()
-    return HttpResponse(f"""
-        <h1>Hello Django !</h1>
-        <p>Mes groupes préférés sont :<p>
-        <ul>
-            <li>{bands[0].name}</li>
-            <li>{bands[1].name}</li>
-            <li>{bands[2].name}</li>
-        </ul>
-""")
+    return render(request,
+    'listings/hello.html',
+    {'bands': bands})
 
 def about(request):
-    return HttpResponse('<h1>À propos</h1> <p>Nous adorons merch !</p>')
+    bands = Band.objects.all()
+    return render(request,
+    'listings/about-us.html',
+    {'bands': bands})
 
 def contact(request):
-    return HttpResponse('<h1>Contact</h1> <p>Para información</p>')
+    bands = Band.objects.all()
+    return render(request,
+    'listings/contact.html',
+    {'bands': bands})
 
 def listings(request):
     ads = Ad.objects.all()
-    return HttpResponse(f"""
-        <h2>{ads[0].title}</h2>
-        <h2>{ads[1].title}</h2>
-        <h2>{ads[2].title}</h2>
-        <h2>{ads[3].title}</h2>
-""")
+    return render(request,
+    'listings/listings.html',
+    {'ads': ads})
+    #return HttpResponse(f"""
+    #    <h2>{ads[0].title}</h2>
+    #    <h2>{ads[1].title}</h2>
+    #    <h2>{ads[2].title}</h2>
+    #    <h2>{ads[3].title}</h2>
+#""")
