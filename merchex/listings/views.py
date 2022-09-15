@@ -2,7 +2,7 @@
 
 from django.http import HttpResponse
 from django.shortcuts import render
-from listings.models import Band
+from listings.models import Band, Product
 from listings.models import Ad
 
 def band_list(request):  # renommer la fonction de vue
@@ -12,10 +12,22 @@ def band_list(request):  # renommer la fonction de vue
            {'bands': bands})
 
 def band_detail(request, id):
-  band = Band.objects.get(id=id)  # nous insérons cette ligne pour obtenir le Band avec cet id
+  band = Band.objects.get(id=id)
   return render(request,
           'listings/band_detail.html',
-          {'band': band}) # nous mettons à jour cette ligne pour passer le groupe au gabarit
+          {'band': band})
+
+def product_list(request):
+    products = Product.objects.all()
+    return render(request,
+    'listings/product_list.html',
+    {'products': products})
+
+def product_detail(request, id):
+  product = Product.objects.get(id=id)
+  return render(request,
+          'listings/product_detail.html',
+          {'product': product})
 
 def about(request):
     bands = Band.objects.all()
@@ -28,15 +40,3 @@ def contact(request):
     return render(request,
     'listings/contact.html',
     {'bands': bands})
-
-def listings(request):
-    ads = Ad.objects.all()
-    return render(request,
-    'listings/listings.html',
-    {'ads': ads})
-    #return HttpResponse(f"""
-    #    <h2>{ads[0].title}</h2>
-    #    <h2>{ads[1].title}</h2>
-    #    <h2>{ads[2].title}</h2>
-    #    <h2>{ads[3].title}</h2>
-#""")

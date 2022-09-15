@@ -19,7 +19,7 @@ class Band(models.Model):
 class Ad(models.Model):
     title = models.fields.CharField(max_length=100)
 
-class Productos(models.Model):
+class Product(models.Model):
     class Type(models.TextChoices):
         RECORDS = 'records'
         CLOTHING = 'clothings'

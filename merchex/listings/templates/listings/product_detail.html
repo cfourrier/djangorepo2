@@ -1,0 +1,15 @@
+{% extends 'listings/base.html' %}
+
+{% block content %}
+
+<h2>{{ product.description }}</h2>
+
+<ul>
+ <li>type : {{ product.type }}</li>
+ 
+</ul>
+
+<a href="{% url 'product-list' %}">Retour à tous les produits</a>
+
+
+{% endblock %}
