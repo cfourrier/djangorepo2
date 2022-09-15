@@ -6,6 +6,9 @@
 
 <ul>
  <li>type : {{ product.type }}</li>
+ {% if product.band %}
+   <li>En lien avec le groupe:  <a href="">{{ product.band }}</a></li>
+   {% endif %}
  
 </ul>
 

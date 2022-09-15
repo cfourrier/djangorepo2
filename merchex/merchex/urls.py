@@ -24,7 +24,7 @@ path('admin/', admin.site.urls),
 path('bands/', views.band_list, name='band-list'),
 path('bands/<int:id>/', views.band_detail, name='band-detail'),
 path('about-us/', views.about),
-path('contact/', views.contact),
+path('contact/', views.contact, name='contact'),
 path('listings/', views.product_list, name='product-list'),
 path('listings/<int:id>', views.product_detail, name='product-detail'),
 ]

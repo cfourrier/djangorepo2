@@ -1,9 +1,10 @@
 # ~/projects/django-web-app/merchex/listings/views.py
-
 from django.http import HttpResponse
 from django.shortcuts import render
 from listings.models import Band, Product
 from listings.models import Ad
+from listings.forms import ContactUsForm
+
 
 def band_list(request):  # renommer la fonction de vue
    bands = Band.objects.all()
@@ -36,7 +37,7 @@ def about(request):
     {'bands': bands})
 
 def contact(request):
-    bands = Band.objects.all()
-    return render(request,
-    'listings/contact.html',
-    {'bands': bands})
+  form = ContactUsForm()  # ajout d’un nouveau formulaire ici
+  return render(request,
+          'listings/contact.html',
+          {'form': form})  # passe ce formulaire au gabarit
